@@ -14,7 +14,7 @@ class Gamer extends Model
     ];
 
     public function gamers() {
-        return $this->hasMany(Game::class);
+        return $this->belongsTo(Game::class);
     }
 
     public function puntos() {

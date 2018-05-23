@@ -15,7 +15,7 @@ class Game extends Model
     ];
 
     public function gamers(){
-        return $this->belongsToMany(Gamer::class);
+        return $this->hasMany(Gamer::class);
     }
 
     function getValueAttribute() {

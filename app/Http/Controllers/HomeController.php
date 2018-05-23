@@ -26,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $juegos = Game::all();
+        return view('welcome', compact('juegos', 'puntos'));
     }
 
     public function add($id, $game)
@@ -72,7 +73,7 @@ class HomeController extends Controller
     public function newGame(Request $request)
     {
         $game = new Game();
-        if ($request->nombre != null){
+        if ($request->name != null){
             $game->name = $request->nombre;
         } else {
             $game->name = 'Nuevo Juego ' . rand(99, 9999);

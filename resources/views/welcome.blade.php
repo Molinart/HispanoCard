@@ -31,6 +31,39 @@
                 </div>
             </div>
 
+            <div class="container">
+                <h2>Resultados Anteriores:</h2>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Juego</th>
+                        <th scope="col">Cadena</th>
+                        <th scope="col">Iniciado</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($juegos as $j)
+                        <tr>
+                            <td>{{ $j->id  }}</td>
+                            <td><a href="{{ route('play', $j->id) }}">{{ $j->name  }}</a></td>
+                            <td>
+                                <a href="{{ route('play', $j->id) }}">
+                                    @foreach($j->gamers as $g)
+                                        @foreach($g->puntos as $p)
+                                            @if($p->valor == 1) {{ strtoupper($p->gamer->player) }} @else {{ strtolower($p->gamer->player) }} @endif
+                                        @endforeach
+                                    @endforeach
+                                </a>
+                            </td>
+                            <td>{{ $j->created_at  }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+
         </main>
 
         <!-- Scripts -->
