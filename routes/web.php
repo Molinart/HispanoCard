@@ -11,15 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/new_game', function () {
     return view('new');
 });
+Route::get('/', 'HomeController@index');
 
 Route::post('/new_game/save', 'HomeController@newGame')->name('save');
+
 Route::get('/jugar/{id}', 'HomeController@play')->name('play');
 
 Route::get('/add/{id}/{game}', 'HomeController@add')->name('add-point');
